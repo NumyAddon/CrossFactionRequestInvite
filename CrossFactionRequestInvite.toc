@@ -1,0 +1,8 @@
+## Interface: @toc-version-retail@
+## Version: @project-version@
+## Title: Cross-Faction Request Invite
+## Notes: Allows you to easily request invite from a cross-faction bnet friend.
+## Author: Numy
+## X-Curse-Project-ID: 701095
+
+CrossFactionRequestInvite.lua
