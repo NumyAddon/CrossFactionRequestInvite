@@ -3,6 +3,7 @@
 ## Title: Cross-Faction Request Invite
 ## Notes: Allows you to easily request invite from a cross-faction bnet friend.
 ## Author: Numy
+## IconTexture: 982414
 ## X-Curse-Project-ID: 701095
 
 CrossFactionRequestInvite.lua
