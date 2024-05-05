@@ -50,6 +50,7 @@ local function handleFriendListButtons()
             button.CrossFactionRequestInviteButton:SetAllPoints();
             button.CrossFactionRequestInviteButton:RegisterForClicks('RightButtonDown');
             -- pass through the leftclick for default behaviour
+            -- note: in 11.0, we can use SetPropagateMouseMotion, and hook the travelPassButton's OnEnter
             button.CrossFactionRequestInviteButton:SetPassThroughButtons('LeftButton');
             button.CrossFactionRequestInviteButton:SetScript('OnEnter', function() onEnter(button.travelPassButton); end);
             button.CrossFactionRequestInviteButton:SetScript('OnLeave', function() GameTooltip:Hide(); end);
