@@ -1,7 +1,6 @@
-local handledButtons = {}
 local function getGameAccountIDByTravelPassButton(travelPassButton)
-    local gameAccountID
-    local friendIndex = travelPassButton:GetParent().id
+    local gameAccountID;
+    local friendIndex = travelPassButton:GetParent().id;
     local numGameAccounts = C_BattleNet.GetFriendNumGameAccounts(friendIndex);
     if numGameAccounts > 1 then
         for i = 1, numGameAccounts do
@@ -18,25 +17,20 @@ local function getGameAccountIDByTravelPassButton(travelPassButton)
         end
     end
 
-    return gameAccountID
+    return gameAccountID;
 end
-local function onClick(travelPassButton, btn)
-    if btn == "LeftButton" then
-        return
-    end
-    -- undo the default behavior
-    FriendsFrame_BattlenetInviteByIndex(travelPassButton:GetParent().id)
+local function onClick(travelPassButton)
+    local gameAccountID = getGameAccountIDByTravelPassButton(travelPassButton);
 
-    local gameAccountID = getGameAccountIDByTravelPassButton(travelPassButton)
-
-    if gameAccountID then BNRequestInviteFriend(gameAccountID) end
+    if gameAccountID then BNRequestInviteFriend(gameAccountID); end
 end
 local function onEnter(travelPassButton)
-    local gameAccountID = getGameAccountIDByTravelPassButton(travelPassButton)
+    ExecuteFrameScript(travelPassButton, 'OnEnter');
+    local gameAccountID = getGameAccountIDByTravelPassButton(travelPassButton);
 
     if gameAccountID then
-        GameTooltip:AddLine("Right-Click to force a request invite", 0, 1, 0)
-        GameTooltip:Show()
+        GameTooltip:AddLine('Right-Click to force a request invite', 0, 1, 0);
+        GameTooltip:Show();
     end
 end
 
@@ -47,23 +41,26 @@ local function handleFriendListButtons()
         and FriendsListFrame.ScrollBox.ScrollTarget
         and FriendsListFrame.ScrollBox.ScrollTarget.GetChildren
     then
-        local buttons = {FriendsListFrame.ScrollBox.ScrollTarget:GetChildren()}
+        local buttons = {FriendsListFrame.ScrollBox.ScrollTarget:GetChildren()};
         for _, button in pairs(buttons) do
-            if not button.travelPassButton or handledButtons[button] then
-                return
+            if not button.travelPassButton or button.CrossFactionRequestInviteButton then
+                return;
             end
-            handledButtons[button] = true
-            button.travelPassButton:RegisterForClicks("LeftButtonDown", "RightButtonDown")
-            -- register leftclick for default behavior
-            button.travelPassButton:HookScript("OnEnter", onEnter)
-            button.travelPassButton:HookScript("OnClick", onClick)
+            button.CrossFactionRequestInviteButton = CreateFrame('BUTTON', nil, button.travelPassButton);
+            button.CrossFactionRequestInviteButton:SetAllPoints();
+            button.CrossFactionRequestInviteButton:RegisterForClicks('RightButtonDown');
+            -- pass through the leftclick for default behaviour
+            button.CrossFactionRequestInviteButton:SetPassThroughButtons('LeftButton');
+            button.CrossFactionRequestInviteButton:SetScript('OnEnter', function() onEnter(button.travelPassButton); end);
+            button.CrossFactionRequestInviteButton:SetScript('OnLeave', function() GameTooltip:Hide(); end);
+            button.CrossFactionRequestInviteButton:SetScript('OnClick', function() onClick(button.travelPassButton); end);
         end
     end
 end
 
 do
     if FriendsList_Update then
-        hooksecurefunc("FriendsList_Update", handleFriendListButtons)
+        hooksecurefunc('FriendsList_Update', handleFriendListButtons);
     end
-    handleFriendListButtons()
+    handleFriendListButtons();
 end
