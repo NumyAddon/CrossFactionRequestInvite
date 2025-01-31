@@ -5,5 +5,18 @@
 ## Author: Numy
 ## IconTexture: Interface\Addons\CrossFactionRequestInvite\media\icon
 ## X-Curse-Project-ID: 701095
+## Category-enUS: Other
+## Category-deDE: Anderes
+## Category-esES: Otros
+## Category-esMX: Otros
+## Category-frFR: Autre
+## Category-itIT: Altro
+## Category-koKR: 기타
+## Category-ptBR: Outro
+## Category-ruRU: Другое
+## Category-zhCN: 其它
+## Category-zhTW: 其他
+
+libs\LibVersionCheck-1.0\LibVersionCheck-1.0.xml
 
 CrossFactionRequestInvite.lua
