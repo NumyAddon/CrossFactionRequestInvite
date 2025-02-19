@@ -5,6 +5,7 @@
 ## Author: Numy
 ## IconTexture: Interface\Addons\CrossFactionRequestInvite\media\icon
 ## X-Curse-Project-ID: 701095
+## X-Wago-ID: YK9EkzKL
 ## Category-enUS: Other
 ## Category-deDE: Anderes
 ## Category-esES: Otros
