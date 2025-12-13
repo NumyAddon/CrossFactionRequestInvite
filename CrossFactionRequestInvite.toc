@@ -1,4 +1,7 @@
-## Interface: @toc-version-retail@,@toc-version-midnight@,120000
+## Interface: @toc-version-midnight@, @toc-version-retail@
+#@debug@
+## Interface: 120000
+#@end-debug@
 ## Version: @project-version@
 ## Title: Cross-Faction Request Invite
 ## Notes: Allows you to easily request invite from a cross-faction bnet friend.
