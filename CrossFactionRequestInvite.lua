@@ -75,6 +75,7 @@ local function handleFriendListButtons()
         and FriendsListFrame.ScrollBox.ScrollTarget
         and FriendsListFrame.ScrollBox.ScrollTarget.GetChildren
     then
+        --- @type FriendsListButtonTemplate[]
         local buttons = {FriendsListFrame.ScrollBox.ScrollTarget:GetChildren()};
         for _, button in pairs(buttons) do
             if not button.travelPassButton or button.CrossFactionRequestInviteButton then
