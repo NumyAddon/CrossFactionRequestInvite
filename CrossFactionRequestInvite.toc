@@ -6,6 +6,8 @@
 ## Title: Cross-Faction Request Invite
 ## Notes: Allows you to easily request invite from a cross-faction bnet friend.
 ## Author: Numy
+## X-GameType: [Game]
+## X-GameFamily: [Family]
 ## IconTexture: Interface\Addons\CrossFactionRequestInvite\media\icon
 ## X-Curse-Project-ID: 701095
 ## X-Wago-ID: YK9EkzKL
